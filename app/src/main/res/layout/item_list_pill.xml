@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_container_vacancy"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:background="@drawable/background_container_white"
+    android:elevation="4dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title_trade_tv"
+            style="@style/style_text_view"
+            android:layout_marginTop="4dp"
+            android:textColor="@android:color/black"
+            tools:text="Industrial Designer, Hardware Hardware" />
+
+        <TextView
+            android:id="@+id/title_manufacturer_tv"
+            style="@style/style_text_view"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/text_color_subtitle"
+            tools:text="Industrial Designer, Hardware Hardware" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
