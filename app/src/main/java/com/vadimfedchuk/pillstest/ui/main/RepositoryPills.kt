@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.AsyncTask
 import android.util.Log
 import android.widget.Toast
+import com.vadimfedchuk.pillstest.R
 import com.vadimfedchuk.pillstest.ui.main.db.PillsDao
 import com.vadimfedchuk.pillstest.ui.main.db.PillsDatabase
 import com.vadimfedchuk.pillstest.ui.main.db.model.Pills
@@ -11,10 +12,10 @@ import com.vadimfedchuk.pillstest.ui.main.network.ApiClient
 import com.vadimfedchuk.pillstest.ui.main.network.ApiService
 import com.vadimfedchuk.pillstest.ui.main.pojo.PillsResponse
 import com.vadimfedchuk.pillstest.ui.main.pojo.ResultsItem
+import com.vadimfedchuk.pillstest.ui.main.utils.APP_LOG_TAG
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableSingleObserver
 import io.reactivex.schedulers.Schedulers
-
 
 class RepositoryPills(val context: Context) {
 
@@ -50,7 +51,8 @@ class RepositoryPills(val context: Context) {
                 }
 
                 override fun onError(e: Throwable) {
-                    Toast.makeText(context, "error getAllPills $e", Toast.LENGTH_SHORT).show()
+                    Log.d(APP_LOG_TAG, "error getAllPills $e")
+                    Toast.makeText(context, context.getString(R.string.error_load_data), Toast.LENGTH_SHORT).show()
                     if(sizePills) {
                         list.addAll(database.pillsDao.allPills)
                         callback(list, true)
@@ -78,7 +80,8 @@ class RepositoryPills(val context: Context) {
                 }
 
                 override fun onError(e: Throwable) {
-                    Toast.makeText(context, "error getAllPillsByQuery $e", Toast.LENGTH_SHORT).show()
+                    Log.d(APP_LOG_TAG, "error getAllPillsByQuery $e")
+                    Toast.makeText(context, context.getString(R.string.error_load_data), Toast.LENGTH_SHORT).show()
                         callback(null, false)
                     }
 
@@ -106,7 +109,8 @@ class RepositoryPills(val context: Context) {
                     }
 
                     override fun onError(e: Throwable) {
-                        Toast.makeText(context, "loadMorePills $e", Toast.LENGTH_SHORT).show()
+                        Log.d(APP_LOG_TAG, "error loadMorePills $e")
+                        Toast.makeText(context, context.getString(R.string.error_load_data), Toast.LENGTH_SHORT).show()
                         callback(list, false)
                     }
 
@@ -126,7 +130,8 @@ class RepositoryPills(val context: Context) {
                 }
 
                 override fun onError(e: Throwable) {
-                    Toast.makeText(context, "error getAllPills $e", Toast.LENGTH_SHORT).show()
+                    Log.d(APP_LOG_TAG, "error getAllPills $e")
+                    Toast.makeText(context, context.getString(R.string.error_load_data), Toast.LENGTH_SHORT).show()
                     pill = database.pillsDao.getPill(id)
                     callback(pill)
 

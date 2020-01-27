@@ -13,7 +13,6 @@ import com.vadimfedchuk.pillstest.R
 import com.vadimfedchuk.pillstest.ui.main.db.model.Pills
 import com.vadimfedchuk.pillstest.ui.main.utils.KEY_ID_FOR_DETAIL
 import com.vadimfedchuk.pillstest.ui.main.viewmodel.DetailViewModel
-import kotlinx.android.synthetic.main.app_bar_main.*
 
 class DetailFragment : Fragment() {
 
@@ -62,7 +61,7 @@ class DetailFragment : Fragment() {
         view.findViewById<TextView>(R.id.manufacturer_name_tv).text = pill.nameManufacturer
         view.findViewById<TextView>(R.id.packaging_description_tv).text = pill.packagingDescription
         view.findViewById<TextView>(R.id.composition_description_tv).text = pill.compositionDescription
-        view.findViewById<TextView>(R.id.composition_inn_tv).text = "${pill.innName}, ${pill.innId}"
-        view.findViewById<TextView>(R.id.composition_pharm_form_tv).text = "${pill.pharmFormName}, ${pill.pharmFormId}"
+        view.findViewById<TextView>(R.id.composition_inn_tv).text = context!!.getString(R.string.text_inn, pill.innName, pill.innId)
+        view.findViewById<TextView>(R.id.composition_pharm_form_tv).text = context!!.getString(R.string.text_inn, pill.pharmFormName, pill.pharmFormId)
     }
 }

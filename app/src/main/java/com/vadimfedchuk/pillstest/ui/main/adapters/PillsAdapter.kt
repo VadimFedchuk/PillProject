@@ -7,7 +7,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.vadimfedchuk.pillstest.R
 import com.vadimfedchuk.pillstest.ui.main.db.model.Pills
-import com.vadimfedchuk.pillstest.ui.main.pojo.ResultsItem
 
 class PillsAdapter(var pills: ArrayList<Pills>, val onClickItem:(id: Int) -> Unit) : RecyclerView.Adapter<PillsAdapter.ViewHolder>() {
 
@@ -27,7 +26,6 @@ class PillsAdapter(var pills: ArrayList<Pills>, val onClickItem:(id: Int) -> Uni
     }
 
     fun setData(list: ArrayList<Pills>) {
-        //pills.clear()
         pills.addAll(list)
         notifyDataSetChanged()
     }

@@ -3,7 +3,6 @@ package com.vadimfedchuk.pillstest.ui.main.ui.fragment
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -40,14 +39,14 @@ class MainFragment : Fragment() {
     ): View {
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         val view = inflater.inflate(R.layout.main_fragment, container, false)
-        val progress_view = view.findViewById(R.id.progress_load) as ProgressBar
+        val progressView = view.findViewById(R.id.progress_load) as ProgressBar
 
         setHasOptionsMenu(true)
         communicator = activity as Communicator
         pillsRecyclerView = view.findViewById(R.id.pills_recycler_view)
         initList()
         viewModel.listPills!!.observe(this, Observer<List<Pills>> { list ->
-            Log.i("TEST", "111")
+
             when(list.isEmpty()) {
                 true -> view.findViewById<TextView>(R.id.empty_list_tv).visibility = View.VISIBLE
                 false -> view.findViewById<TextView>(R.id.empty_list_tv).visibility = View.GONE
@@ -56,7 +55,7 @@ class MainFragment : Fragment() {
 
         })
         viewModel.isLoadData.observe(this, Observer<Boolean> { isLoad ->
-            progress_view.visibility = View.GONE
+            progressView.visibility = View.GONE
             if(!isLoad) {
                 view.findViewById<TextView>(R.id.empty_list_tv).visibility = View.VISIBLE
             }
@@ -65,7 +64,7 @@ class MainFragment : Fragment() {
         fabRefresh.setOnClickListener {
             adapterPills.pills.clear()
             adapterPills.notifyDataSetChanged()
-            progress_view.visibility = View.VISIBLE
+            progressView.visibility = View.VISIBLE
             viewModel.refreshData()
         }
 
@@ -74,7 +73,7 @@ class MainFragment : Fragment() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 val linearLayoutManager = recyclerView.layoutManager as LinearLayoutManager
                 if (linearLayoutManager.findLastCompletelyVisibleItemPosition() == adapterPills.itemCount - 1) {
-                    progress_view.visibility = View.VISIBLE
+                    progressView.visibility = View.VISIBLE
                         viewModel.loadMorePills()
                     }
 

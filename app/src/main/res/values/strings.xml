@@ -11,4 +11,7 @@
     <string name="composition_pharm_form_title">Composition pharm form</string>
     <string name="title_empty_list">Список пуст</string>
     <string name="update">обновить</string>
+    <string name="error_load_data">error load data</string>
+    <string name="text_inn">$1%s, $2%d</string>
+    <string name="text_pharmform">$1%s, $2%d</string>
 </resources>

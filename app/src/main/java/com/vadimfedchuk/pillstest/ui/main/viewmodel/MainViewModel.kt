@@ -1,7 +1,6 @@
 package com.vadimfedchuk.pillstest.ui.main.viewmodel
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.vadimfedchuk.pillstest.ui.main.RepositoryPills
